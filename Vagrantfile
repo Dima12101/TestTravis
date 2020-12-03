@@ -4,15 +4,15 @@
 Vagrant.configure("2") do |config|
 
   # Configuration of new VM.
-  config.vm.define :test_vm do |test_vm|
+  config.vm.define :default do |default|
     # Box name
-    test_vm.vm.box = "generic/ubuntu1804"
+    default.vm.box = "generic/ubuntu1804"
 
     # Domain Specific Options
     #
     # See README for more info.
     #
-    #test_vm.vm.provider :libvirt do |domain|
+    #default.vm.provider :libvirt do |domain|
     #  domain.memory = 2048
     #  domain.cpus = 2
     #end
@@ -21,8 +21,8 @@ Vagrant.configure("2") do |config|
     # 
     # Networking features in the form of `config.vm.network`
     #
-    #test_vm.vm.network :private_network, :ip => '10.20.30.40'
-    #test_vm.vm.network :public_network, :ip => '10.20.30.41'
+    #default.vm.network :private_network, :ip => '10.20.30.40'
+    #default.vm.network :public_network, :ip => '10.20.30.41'
   end
 
   # Options for Libvirt Vagrant provider.
