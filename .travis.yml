@@ -6,14 +6,13 @@ language: python
 python:
   - "3.7"
 
-# Параметры окружения
-env:
-  - DJANGO_VERSION=2.2.7
 
-# Команда для установки зависимостей в окружение (при этом доступны переменные из секции "env")
-install:
-  - pip install -q Django==$DJANGO_VERSION
-  - pip install -r requirements.txt
-
-# Команда для запуска тестов, в моем случае они запускаются именно так
-script: python project/manage.py test
+stages:
+  - name: build
+    env:
+    - DJANGO_VERSION=2.2.7
+    install:
+    - pip install -q Django==$DJANGO_VERSION
+    - pip install -r requirements.txt
+    - git clone https://github.com/containernet/containernet.git
+    script: python project/manage.py test
