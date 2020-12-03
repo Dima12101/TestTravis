@@ -15,7 +15,7 @@ install:
 - vagrant --version
 
 # Install vagrant-libvirt Vagrant plugin
-- vagrant plugin install vagrant-libvirt
+- sudo vagrant plugin install vagrant-libvirt
 
 env:
 - VAGRANT_DEFAULT_PROVIDER=libvirt
@@ -25,15 +25,13 @@ jobs:
   include:
     - name: "Test1"
       script:
-        - vagrant --version
-        - vagrant init generic/ubuntu1804 --box-version 3.1.10
-        - vagrant up
-        - vagrant ssh -c "echo 'hello world!'"
+        - sudo vagrant --version
+        - sudo vagrant up
+        - sudo vagrant ssh -c "echo 'hello world!'"
       
     - name: "Test"
       script:
-        - vagrant --version
-        - vagrant init generic/ubuntu1804 --box-version 3.1.10
+        - sudo vagrant --version
 
 
 
