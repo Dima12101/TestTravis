@@ -30,11 +30,13 @@ jobs:
     - stage: execution
       name: test1
       script: 
+        - bundle install
         - pip freeze
         - ls
       
     - name: test2
       script:
+        - bundle install
         - pip freeze
         - ls
         - python project/manage.py test
