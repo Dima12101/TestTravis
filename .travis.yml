@@ -16,7 +16,8 @@ install:
 - sudo vagrant plugin install vagrant-libvirt
 
 script:
-- sudo vagrant init
+#- sudo vagrant box add generic/ubuntu1804 --provider=libvirt
+- sudo vagrant init travis-ci/ci-minimal-trusty64 --box-version 0.1.0
 - sudo vagrant up --provider=libvirt
 - sudo vagrant ssh -c "echo 'hello world!'"
 
