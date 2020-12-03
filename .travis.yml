@@ -11,8 +11,23 @@ stage:
   - execution
 
 install:
-  - sudo apt install virtualbox
-  - sudo apt install vagrant
+# Install libvrt & KVM (see https://github.com/alvistack/ansible-role-virtualbox/blob/master/.travis.yml)
+- sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
+
+# Download Vagrant & Install Vagrant package
+- sudo dpkg -i vagrant_2.2.14_x86_64.deb
+
+# Vagrant correctly installed?
+- vagrant --version
+
+# Install vagrant-libvirt Vagrant plugin
+- sudo vagrant plugin install vagrant-libvirt
+
+# Setting up permissions
+- sudo chown -R $USER:$USER ~/.vagrant.d
+
+- vagrant up
+- vagrant ssh -c "ls"
 
 jobs:
   include:
@@ -23,13 +38,9 @@ jobs:
       install:
         - pip install -q Django==$DJANGO_VERSION
         - pip install -r requirements.txt
-        - git clone https://github.com/containernet/containernet.git
       script:
         - vagrant --version
         - ls -la
-      cache:
-        directories:
-          - ./containernet
     
     - stage: execution
       name: test1
