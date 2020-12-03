@@ -30,7 +30,7 @@ install:
 - sudo apt-get install virtualbox
 
 - vagrant init
-- vagrant up
+- vagrant up --provider virtualbox
 - vagrant ssh -c "ls"
 
 #jobs:
