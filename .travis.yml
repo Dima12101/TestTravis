@@ -27,6 +27,7 @@ install:
 # Setting up permissions
 - sudo chown -R $USER:$USER ~/.vagrant.d
 
+- vagrant init
 - vagrant up
 - vagrant ssh -c "ls"
 
