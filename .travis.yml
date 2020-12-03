@@ -14,30 +14,37 @@ stage:
 
 install:
 # Install libvrt & KVM (see https://github.com/alvistack/ansible-role-virtualbox/blob/master/.travis.yml)
-- sudo apt-get update && sudo apt-get install -y bridge-utils
-- sudo apt-get build-dep vagrant ruby-libvirt
-- sudo apt-get install qemu libvirt-bin ebtables dnsmasq-base
-- sudo apt-get install libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev
+#- sudo apt-get update && sudo apt-get install -y bridge-utils
+#- sudo apt-get build-dep vagrant ruby-libvirt
+#- sudo apt-get install qemu libvirt-bin ebtables dnsmasq-base
+#- sudo apt-get install libxslt-dev libxml2-dev libvirt-dev zlib1g-dev ruby-dev
 
 #Download Vagrant & Install Vagrant package
 #- sudo wget -nv https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb
 #- sudo dpkg -i vagrant_2.2.14_x86_64.deb
 
 # Vagrant correctly installed?
-- vagrant --version
+#- vagrant --version
 
 # Install vagrant-libvirt Vagrant plugin
-- sudo vagrant plugin install vagrant-libvirt
+#- sudo vagrant plugin install vagrant-libvirt
 
 #Setting up permissions
 #- sudo chown -R $USER:$USER ~/.vagrant.d
 
 #- sudo apt-get install virtualbox
 
-- sudo vagrant init
+#- sudo vagrant init
+#- vagrant box add generic/ubuntu1804 --provider=libvirt
 #- vagrant up --provider virtualbox
-- sudo vagrant up
-- sudo vagrant ssh -c "ls"
+#- sudo vagrant up
+#- sudo vagrant ssh -c "ls"
+
+- sudo apt install virtualbox -y
+- sudo apt install vagrant -y
+- vagrant init ubuntu/xenial64
+- vagrant ssh -c "ls"
+
 
 #jobs:
   #include:
