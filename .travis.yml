@@ -40,8 +40,9 @@ install:
 #- sudo vagrant up
 #- sudo vagrant ssh -c "ls"
 
-- sudo apt install virtualbox -y
-- sudo apt install vagrant -y
+- sudo apt-get update && sudo apt-get install -y bridge-utils bridge-utils ebtables dnsmasq-base ruby-dev
+- sudo apt-get install virtualbox -y
+- sudo apt-get install vagrant -y
 - vagrant init ubuntu/xenial64
 - vagrant ssh -c "ls"
 
