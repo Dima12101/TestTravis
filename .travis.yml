@@ -6,6 +6,8 @@ language: python
 python:
   - "3.7"
   
+dist: bionic
+  
 stage:
   - build
   - execution
@@ -21,15 +23,16 @@ install:
 # Vagrant correctly installed?
 - vagrant --version
 
-#Install vagrant-libvirt Vagrant plugin
-#- sudo vagrant plugin install vagrant-libvirt
+# Install vagrant-libvirt Vagrant plugin
+- sudo vagrant plugin install vagrant-libvirt
 
-#Setting up permissions
-#- sudo chown -R $USER:$USER ~/.vagrant.d
+# Setting up permissions
+- sudo chown -R $USER:$USER ~/.vagrant.d
 
-- sudo apt-get install virtualbox
+#- sudo apt-get install virtualbox
 
 - vagrant init
+#- vagrant up --provider virtualbox
 - vagrant up --provider virtualbox
 - vagrant ssh -c "ls"
 
