@@ -17,9 +17,10 @@ install:
 - sudo vagrant plugin install vagrant-libvirt
 
 script:
-#- sudo vagrant box add generic/ubuntu1804 --provider=libvirt
 - sudo vagrant init generic/ubuntu1804 --box-version 3.1.10
 
+env:
+- VAGRANT_DEFAULT_PROVIDER=libvirt
 
 
 jobs:
