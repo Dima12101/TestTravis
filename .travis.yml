@@ -14,13 +14,15 @@ stage:
 jobs:
   include:
     - stage: build
+      name: general
       env:
         - DJANGO_VERSION=2.2.7
       install:
         - pip install -q Django==$DJANGO_VERSION
         - pip install -r requirements.txt
         - git clone https://github.com/containernet/containernet.git
-      script: echo "hello world from dev11"
+      script:
+        - ls -la
     
     - stage: execution
       name: test1
