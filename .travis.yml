@@ -26,8 +26,8 @@ jobs:
     - name: "Test1"
       script:
         - sudo vagrant --version
-        - sudo vagrant up
-        - sudo vagrant ssh -c "echo 'hello world!'"
+        - vagrant up
+        - vagrant ssh -c "echo 'hello world!'"
       
     - name: "Test"
       script:
