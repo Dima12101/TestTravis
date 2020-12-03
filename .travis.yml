@@ -31,10 +31,10 @@ install:
 
 #- sudo apt-get install virtualbox
 
-- vagrant init
+- sudo vagrant init
 #- vagrant up --provider virtualbox
-- vagrant up
-- vagrant ssh -c "ls"
+- sudo vagrant up
+- sudo vagrant ssh -c "ls"
 
 #jobs:
   #include:
