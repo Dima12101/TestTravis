@@ -1,19 +1,40 @@
-
-# Тут указывается используемый в проекте язык программирования, можно указать несколько
+dist: bionic
 language: python
 
-# Далее, укажите версии python для которых нужно производить сборки
-python:
-  - "3.7"
-  
-dist: bionic
-  
-stage:
-  - build
-  - execution
-
 install:
-# Install libvrt & KVM (see https://github.com/alvistack/ansible-role-virtualbox/blob/master/.travis.yml)
+# Install libvrt & KVM
+- sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
+
+# Download Vagrant & Install Vagrant package
+- sudo wget -nv https://releases.hashicorp.com/vagrant/2.2.7/vagrant_2.2.7_x86_64.deb
+- sudo dpkg -i vagrant_2.2.7_x86_64.deb
+
+# Vagrant correctly installed?
+- vagrant --version
+
+# Install vagrant-libvirt Vagrant plugin
+- sudo vagrant plugin install vagrant-libvirt
+
+script:
+- sudo vagrant up --provider=libvirt
+- sudo vagrant ssh -c "echo 'hello world!'"
+
+
+#Тут указывается используемый в проекте язык программирования, можно указать несколько
+#language: python
+
+#Далее, укажите версии python для которых нужно производить сборки
+#python:
+  #- "3.7"
+  
+#dist: bionic
+  
+#stage:
+  #- build
+  #- execution
+
+#install:
+#Install libvrt & KVM (see https://github.com/alvistack/ansible-role-virtualbox/blob/master/.travis.yml)
 #- sudo apt-get update && sudo apt-get install -y bridge-utils
 #- sudo apt-get build-dep vagrant ruby-libvirt
 #- sudo apt-get install qemu libvirt-bin ebtables dnsmasq-base
@@ -23,10 +44,10 @@ install:
 #- sudo wget -nv https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb
 #- sudo dpkg -i vagrant_2.2.14_x86_64.deb
 
-# Vagrant correctly installed?
+#Vagrant correctly installed?
 #- vagrant --version
 
-# Install vagrant-libvirt Vagrant plugin
+#Install vagrant-libvirt Vagrant plugin
 #- sudo vagrant plugin install vagrant-libvirt
 
 #Setting up permissions
@@ -40,11 +61,11 @@ install:
 #- sudo vagrant up
 #- sudo vagrant ssh -c "ls"
 
-- sudo apt-get update && sudo apt-get install -y bridge-utils bridge-utils ebtables dnsmasq-base ruby-dev
-- sudo apt-get install virtualbox -y
-- sudo apt-get install vagrant -y
-- vagrant init ubuntu/xenial64
-- vagrant ssh -c "ls"
+#- sudo apt-get update && sudo apt-get install -y bridge-utils bridge-utils ebtables dnsmasq-base ruby-dev
+#- sudo apt-get install virtualbox -y
+#- sudo apt-get install vagrant -y
+#- vagrant init ubuntu/xenial64
+#- vagrant ssh -c "ls"
 
 
 #jobs:
