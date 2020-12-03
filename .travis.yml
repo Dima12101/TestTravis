@@ -10,6 +10,9 @@ stage:
   - build
   - execution
 
+install:
+  - sudo apt install virtualbox
+  - sudo apt install vagrant
 
 jobs:
   include:
@@ -22,6 +25,7 @@ jobs:
         - pip install -r requirements.txt
         - git clone https://github.com/containernet/containernet.git
       script:
+        - vagrant --version
         - ls -la
       cache:
         directories:
