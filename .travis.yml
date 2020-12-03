@@ -33,7 +33,7 @@ install:
 
 - vagrant init
 #- vagrant up --provider virtualbox
-- vagrant up --provider virtualbox
+- vagrant up
 - vagrant ssh -c "ls"
 
 #jobs:
