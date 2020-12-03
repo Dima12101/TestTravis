@@ -5,14 +5,31 @@ language: python
 # Далее, укажите версии python для которых нужно производить сборки
 python:
   - "3.7"
+  
+stage:
+  - build
+  - execution
 
 
-stages:
-  - name: build
-    env:
-    - DJANGO_VERSION=2.2.7
-    install:
-    - pip install -q Django==$DJANGO_VERSION
-    - pip install -r requirements.txt
-    - git clone https://github.com/containernet/containernet.git
-    script: python project/manage.py test
+jobs:
+  include:
+    - stage: build
+      env:
+        - DJANGO_VERSION=2.2.7
+      install:
+        - pip install -q Django==$DJANGO_VERSION
+        - pip install -r requirements.txt
+        - git clone https://github.com/containernet/containernet.git
+      script: echo "hello world from dev11"
+    
+    - stage: execution
+      name: test1
+      script: 
+        - pip freeze
+        - ls
+      
+    - name: test2
+      script:
+        - pip freeze
+        - ls
+        - python project/manage.py test
