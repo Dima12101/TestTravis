@@ -21,11 +21,13 @@ install:
 # Vagrant correctly installed?
 - vagrant --version
 
-# Install vagrant-libvirt Vagrant plugin
-- sudo vagrant plugin install vagrant-libvirt
+#Install vagrant-libvirt Vagrant plugin
+#- sudo vagrant plugin install vagrant-libvirt
 
-# Setting up permissions
-- sudo chown -R $USER:$USER ~/.vagrant.d
+#Setting up permissions
+#- sudo chown -R $USER:$USER ~/.vagrant.d
+
+- sudo apt-get install virtualbox
 
 - vagrant init
 - vagrant up
