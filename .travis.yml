@@ -4,21 +4,26 @@ python:
   - "3.8"
 
 install:
-# Install libvrt & KVM
-- sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
-
-# Download Vagrant & Install Vagrant package
-- sudo wget -nv https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb
+- sudo apt-get update -q
+- sudo apt-get install -q virtualbox --fix-missing
+- sudo wget -nv https://dl.bintray.com/mitchellh/vagrant/vagrant_2.2.14_x86_64.deb
 - sudo dpkg -i vagrant_2.2.14_x86_64.deb
+- bundle install
+#Install libvrt & KVM
+#- sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
 
-# Vagrant correctly installed?
-- vagrant --version
+#Download Vagrant & Install Vagrant package
+#- sudo wget -nv https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb
+#- sudo dpkg -i vagrant_2.2.14_x86_64.deb
 
-# Install vagrant-libvirt Vagrant plugin
-- sudo vagrant plugin install vagrant-libvirt
+#Vagrant correctly installed?
+#- vagrant --version
 
-env:
-- VAGRANT_DEFAULT_PROVIDER=libvirt
+#Install vagrant-libvirt Vagrant plugin
+#- sudo vagrant plugin install vagrant-libvirt
+
+#env:
+#- VAGRANT_DEFAULT_PROVIDER=libvirt
 
 
 jobs:
